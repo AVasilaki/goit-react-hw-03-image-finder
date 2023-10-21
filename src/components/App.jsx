@@ -1,11 +1,12 @@
 import { Component } from 'react';
 import { Searchbar } from './Searchbar/Searchbar';
-import { ImageGaleryItem } from './ImageGalleryItem/ImageGalleryItem';
 import axios from 'axios';
+import { ImageGallery } from './ImageGallery/ImageGallery';
 
 export class App extends Component {
   state = {
     keyWord: '',
+    images: [],
   };
   onChange = evt => {
     evt.preventDefault();
@@ -14,9 +15,12 @@ export class App extends Component {
     this.setState({ keyWord: form.elements.keyword.value });
   };
 
-  async componentDidUpdate() {
+  async componentDidUpdate(a, b) {
+    console.log('a', a);
+    console.log('b', b.keyWord);
+    console.log(this.state);
     const keyWord = this.state.keyWord;
-    console.log(keyWord);
+
     try {
       const resp = await axios.get(`https://pixabay.com/api/`, {
         params: {
@@ -29,6 +33,10 @@ export class App extends Component {
           page: 1,
         },
       });
+      if (b.keyWord !== keyWord) {
+        this.setState({ images: resp.data.hits });
+      }
+
       console.log(resp);
       return resp;
     } catch (error) {
@@ -39,8 +47,8 @@ export class App extends Component {
   render() {
     return (
       <div>
-        <ImageGaleryItem></ImageGaleryItem>
         <Searchbar onChange={this.onChange}></Searchbar>
+        <ImageGallery></ImageGallery>
       </div>
     );
   }
