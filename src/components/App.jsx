@@ -16,9 +16,9 @@ export class App extends Component {
   };
 
   async componentDidUpdate(a, b) {
-    console.log('a', a);
-    console.log('b', b.keyWord);
-    console.log(this.state);
+    // console.log('a', a);
+    // console.log('b', b.keyWord);
+    // console.log(this.state);
     const keyWord = this.state.keyWord;
 
     try {
@@ -37,7 +37,7 @@ export class App extends Component {
         this.setState({ images: resp.data.hits });
       }
 
-      console.log(resp);
+      // console.log(resp);
       return resp;
     } catch (error) {
       console.error(error);
@@ -48,7 +48,7 @@ export class App extends Component {
     return (
       <div>
         <Searchbar onChange={this.onChange}></Searchbar>
-        <ImageGallery></ImageGallery>
+        <ImageGallery galery={this.state.images}></ImageGallery>
       </div>
     );
   }
