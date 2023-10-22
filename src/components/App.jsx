@@ -2,11 +2,18 @@ import { Component } from 'react';
 import { Searchbar } from './Searchbar/Searchbar';
 import axios from 'axios';
 import { ImageGallery } from './ImageGallery/ImageGallery';
+import { Button } from './Button/Button';
 
 export class App extends Component {
   state = {
     keyWord: '',
     images: [],
+    page: 1,
+  };
+  onLoadMore = () => {
+    this.setState(prevState => ({
+      page: (prevState.page += 1),
+    }));
   };
   onChange = evt => {
     evt.preventDefault();
@@ -20,6 +27,7 @@ export class App extends Component {
     // console.log('b', b.keyWord);
     // console.log(this.state);
     const keyWord = this.state.keyWord;
+    const page = this.state.page;
 
     try {
       const resp = await axios.get(`https://pixabay.com/api/`, {
@@ -30,11 +38,13 @@ export class App extends Component {
           orientation: 'horizontal',
           safesearch: 'true',
           per_page: 12,
-          page: 1,
+          page: page,
         },
       });
-      if (b.keyWord !== keyWord) {
-        this.setState({ images: resp.data.hits });
+      if (b.keyWord !== keyWord || b.page !== page) {
+        this.setState(prevState => ({
+          images: [...prevState.images, ...resp.data.hits],
+        }));
       }
 
       // console.log(resp);
@@ -49,6 +59,10 @@ export class App extends Component {
       <div>
         <Searchbar onChange={this.onChange}></Searchbar>
         <ImageGallery galery={this.state.images}></ImageGallery>
+        <Button
+          galery={this.state.images.length}
+          onChange={this.onLoadMore}
+        ></Button>
       </div>
     );
   }
