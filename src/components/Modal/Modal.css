@@ -1,0 +1,19 @@
+.Modal {
+  width: 500px;
+  height: 1000px;
+  /* position: absolute; */
+  /* top: 90px; */
+  /* left: 90px; */
+  /* right: 540px; */
+  /* bottom: 40px; */
+  background-color: papayawhip;
+}
+
+.Overlay {
+  /* position: fixed; */
+  /* top: 560; */
+  /* left: 0; */
+  /* right: 0; */
+  /* bottom: 0; */
+  background-color: rebeccapurple;
+}
