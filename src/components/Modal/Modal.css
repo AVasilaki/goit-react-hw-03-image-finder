@@ -1,6 +1,6 @@
 .Modal {
-  width: 500px;
-  height: 1000px;
+  /* width: 500px; */
+  /* height: 1000px; */
   /* position: absolute; */
   /* top: 90px; */
   /* left: 90px; */
@@ -10,10 +10,11 @@
 }
 
 .Overlay {
+  /* width: 700px; */
   /* position: fixed; */
   /* top: 560; */
   /* left: 0; */
   /* right: 0; */
   /* bottom: 0; */
-  background-color: rebeccapurple;
+  background-color: rgb(15, 12, 19);
 }
