@@ -22,30 +22,10 @@ export const Modalw = ({ isOpen, large, isClose }) => {
       bottom: 0,
       backgroundColor: 'gray',
     },
-    // content: {
-    //   position: 'absolute',
-    //   top: '40px',
-    //   left: '40px',
-    //   right: '40px',
-    //   bottom: '40px',
-    //   border: '1px solid #ccc',
-    //   background: '#fff',
-    //   overflow: 'auto',
-    //   WebkitOverflowScrolling: 'touch',
-    //   borderRadius: '4px',
-    //   outline: 'none',
-    //   padding: '20px',
-    // },
   };
   Modal.setAppElement('#root');
   return (
-    <Modal
-      isOpen={isOpen}
-      // onAfterOpen={afterOpenModal}
-      onRequestClose={isClose}
-      style={customStyles}
-      // contentLabel="Example Modal"
-    >
+    <Modal isOpen={isOpen} onRequestClose={isClose} style={customStyles}>
       <div className="Overlay">
         <div className="Modal">
           <img src={large} alt="" />
@@ -54,16 +34,3 @@ export const Modalw = ({ isOpen, large, isClose }) => {
     </Modal>
   );
 };
-
-// import * as basicLightbox from 'basiclightbox';
-// export const Modal = ({ large }) => {
-//   const instance = basicLightbox.create(`
-//     <div class="overlay">
-//   <div class="modal">
-//     <img src="${large}" alt="" />
-//   </div>
-// </div>
-// `);
-
-//   instance.show();
-// };
