@@ -28,7 +28,7 @@ export const Modalw = ({ isOpen, large, isClose }) => {
     <Modal isOpen={isOpen} onRequestClose={isClose} style={customStyles}>
       <div className="Overlay">
         <div className="Modal">
-          <img src={large} alt="" />
+          <img src={large} width={1200} alt="" />
         </div>
       </div>
     </Modal>
