@@ -1,5 +1,5 @@
 import Modal from 'react-modal';
-import '../Modal/Modal.css';
+
 export const Modalw = ({ isOpen, large, isClose }) => {
   console.log(isOpen);
   const customStyles = {
