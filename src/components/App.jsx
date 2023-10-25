@@ -26,11 +26,11 @@ export class App extends Component {
     this.setState({ keyWord: form.elements.keyword.value });
   };
 
-  async componentDidUpdate(_, b) {
+  async componentDidUpdate(_, prew) {
     const keyWord = this.state.keyWord;
     const page = this.state.page;
 
-    if (b.keyWord !== keyWord || b.page !== page) {
+    if (prew.keyWord !== keyWord || prew.page !== page) {
       this.setState({ loader: true });
 
       try {
