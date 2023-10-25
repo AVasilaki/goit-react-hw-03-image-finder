@@ -48,6 +48,7 @@ export class App extends Component {
           images: [...prevState.images, ...resp.data.hits],
         }));
         console.log(resp);
+        console.log(page);
         return resp;
       } catch (error) {
         console.error(error);
