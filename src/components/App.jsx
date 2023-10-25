@@ -12,22 +12,20 @@ export class App extends Component {
     page: 1,
     loader: false,
   };
+
   onLoadMore = () => {
     this.setState(prevState => ({
       page: (prevState.page += 1),
     }));
   };
+
   onChange = evt => {
     evt.preventDefault();
     const form = evt.currentTarget;
-    // console.log(form.elements.keyword.value);
     this.setState({ keyWord: form.elements.keyword.value });
   };
 
   async componentDidUpdate(a, b) {
-    // console.log('a', a);
-    // console.log('b', b.keyWord);
-    // console.log(this.state);
     const keyWord = this.state.keyWord;
     const page = this.state.page;
 
@@ -49,7 +47,7 @@ export class App extends Component {
         this.setState(prevState => ({
           images: [...prevState.images, ...resp.data.hits],
         }));
-        // console.log(resp);
+
         return resp;
       } catch (error) {
         console.error(error);
@@ -63,7 +61,6 @@ export class App extends Component {
     return (
       <div>
         <Searchbar onChange={this.onChange}></Searchbar>
-
         <ImageGallery galery={this.state.images}></ImageGallery>
         <Audio visible={this.state.loader} />
         <Button

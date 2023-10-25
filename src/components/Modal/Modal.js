@@ -1,7 +1,6 @@
 import Modal from 'react-modal';
 
 export const Modalw = ({ isOpen, large, isClose }) => {
-  console.log(isOpen);
   const customStyles = {
     content: {
       width: '95%',
@@ -26,10 +25,8 @@ export const Modalw = ({ isOpen, large, isClose }) => {
   Modal.setAppElement('#root');
   return (
     <Modal isOpen={isOpen} onRequestClose={isClose} style={customStyles}>
-      <div className="Overlay">
-        <div className="Modal">
-          <img src={large} width={1200} alt="" />
-        </div>
+      <div>
+        <img src={large} alt="" />
       </div>
     </Modal>
   );
