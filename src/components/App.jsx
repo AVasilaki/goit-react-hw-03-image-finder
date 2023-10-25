@@ -25,7 +25,7 @@ export class App extends Component {
     this.setState({ keyWord: form.elements.keyword.value });
   };
 
-  async componentDidUpdate(a, b) {
+  async componentDidUpdate(_, b) {
     const keyWord = this.state.keyWord;
     const page = this.state.page;
 
