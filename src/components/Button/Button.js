@@ -1,9 +1,9 @@
-export const Button = ({ galery, onChange }) => {
+export const Button = ({ galery, onLoadMore }) => {
   if (galery === 0) {
     return;
   } else
     return (
-      <button className="Button " onClick={onChange}>
+      <button className="Button " onClick={onLoadMore}>
         load more
       </button>
     );

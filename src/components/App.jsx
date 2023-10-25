@@ -66,7 +66,7 @@ export class App extends Component {
         <Audio visible={this.state.loader} />
         <Button
           galery={this.state.images.length}
-          onChange={this.onLoadMore}
+          onLoadMore={this.onLoadMore}
         ></Button>
       </div>
     );
