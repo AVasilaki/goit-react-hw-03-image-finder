@@ -1,5 +1,5 @@
 import { ImageGaleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
-import '../styles.css';
+// import '../styles.css';
 export const ImageGallery = ({ galery }) => {
   return (
     <ul className="ImageGallery">
