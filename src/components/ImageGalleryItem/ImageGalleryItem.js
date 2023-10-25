@@ -1,6 +1,5 @@
 import { Modalw } from 'components/Modal/Modal';
 import { Component } from 'react';
-// import '../styles.css';
 
 export class ImageGaleryItem extends Component {
   state = {

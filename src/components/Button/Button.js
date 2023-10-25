@@ -1,4 +1,3 @@
-// import '../styles.css';
 export const Button = ({ galery, onChange }) => {
   if (galery === 0) {
     return;
