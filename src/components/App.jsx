@@ -23,7 +23,7 @@ export class App extends Component {
   onChange = evt => {
     evt.preventDefault();
     const form = evt.currentTarget;
-    this.setState({ keyWord: form.elements.keyword.value });
+    this.setState({ keyWord: form.elements.keyword.value, images: [] });
   };
 
   async componentDidUpdate(_, prew) {
