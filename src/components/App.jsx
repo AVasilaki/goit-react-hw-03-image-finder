@@ -1,10 +1,10 @@
 import { Component } from 'react';
 import { Searchbar } from './Searchbar/Searchbar';
-import axios from 'axios';
+// import axios from 'axios';
 import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Button } from './Button/Button';
 import { Audio } from 'react-loader-spinner';
-
+import { fetchApi } from 'api/api';
 export class App extends Component {
   state = {
     keyWord: '',
@@ -38,17 +38,18 @@ export class App extends Component {
       this.setState({ loader: true });
 
       try {
-        const resp = await axios.get(`https://pixabay.com/api/`, {
-          params: {
-            key: '39170187-3cdd77eb9e5c506c0caadebc8',
-            q: keyWord,
-            image_type: 'photo',
-            orientation: 'horizontal',
-            safesearch: 'true',
-            per_page: 12,
-            page: page,
-          },
-        });
+        const resp = await fetchApi(page, keyWord);
+        // const resp = await axios.get(`https://pixabay.com/api/`, {
+        //   params: {
+        //     key: '39170187-3cdd77eb9e5c506c0caadebc8',
+        //     q: keyWord,
+        //     image_type: 'photo',
+        //     orientation: 'horizontal',
+        //     safesearch: 'true',
+        //     per_page: 12,
+        //     page: page,
+        //   },
+        // });
         this.setState(prevState => ({
           images: [...prevState.images, ...resp.data.hits],
         }));
