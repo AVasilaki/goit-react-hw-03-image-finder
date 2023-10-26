@@ -12,5 +12,6 @@ export const fetchApi = async (page, keyWord) => {
       page: page,
     },
   });
+  console.log(resp);
   return resp;
 };
