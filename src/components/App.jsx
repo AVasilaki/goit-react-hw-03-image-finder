@@ -38,7 +38,7 @@ export class App extends Component {
       this.setState({ loader: true });
       console.log(' component did update');
       try {
-        const resp = await fetchApi(page, keyWord);
+        const resp = await fetchApi(this.state.page, keyWord);
 
         this.setState(prevState => ({
           images: [...prevState.images, ...resp.data.hits],
