@@ -36,7 +36,7 @@ export class App extends Component {
 
     if (prew.keyWord !== keyWord || prew.page !== page) {
       this.setState({ loader: true });
-      console.log(' component did update');
+      console.log(' componen did update');
       try {
         const resp = await fetchApi(this.state.page, keyWord);
 
