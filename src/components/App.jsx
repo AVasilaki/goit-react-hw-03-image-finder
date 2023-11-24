@@ -11,6 +11,8 @@ export class App extends Component {
     images: [],
     page: 1,
     loader: false,
+
+    visibleBtn: false,
   };
 
   onLoadMore = () => {
@@ -36,15 +38,20 @@ export class App extends Component {
 
     if (prew.keyWord !== keyWord || prew.page !== page) {
       this.setState({ loader: true });
-      console.log(' componen did update');
+
       try {
         const resp = await fetchApi(this.state.page, keyWord);
 
         this.setState(prevState => ({
           images: [...prevState.images, ...resp.data.hits],
         }));
-        console.log(resp);
-        console.log(page);
+
+        if (resp.data.hits.length > 11) {
+          this.setState({ visibleBtn: true });
+        }
+        if (page * 12 >= resp.data.total) {
+          this.setState({ visibleBtn: false });
+        }
         return resp;
       } catch (error) {
         console.error(error);
@@ -55,15 +62,19 @@ export class App extends Component {
     }
   }
   render() {
+    const visibleBtn = this.state.visibleBtn;
     return (
       <div>
         <Searchbar onChange={this.onChange}></Searchbar>
         <ImageGallery galery={this.state.images}></ImageGallery>
         <Audio visible={this.state.loader} />
-        <Button
-          galery={this.state.images.length}
-          onLoadMore={this.onLoadMore}
-        ></Button>
+
+        {visibleBtn && (
+          <Button
+            // galery={this.state.images.length}
+            onLoadMore={this.onLoadMore}
+          ></Button>
+        )}
       </div>
     );
   }
